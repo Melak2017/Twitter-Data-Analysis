@@ -157,6 +157,14 @@ class TweetDfExtractor:
 
         return lang
 
+    def find_location(self) -> list:
+        #location=[tweet['user']['location'] for tweet in self.tweet_list]
+        location = []
+        for tweet in self.tweets_list:
+            location.append(tweet['user']['location'])
+
+        return location
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
