@@ -99,6 +99,16 @@ class TweetDfExtractor:
 
         return friends_count
 
+    def is_sensitive(self) -> list:
+        is_sensitive = []
+        for tweet in self.tweets_list:
+            if 'possibly_sensitive' in tweet.keys():
+                is_sensitive.append(tweet['possibly_sensitive'])
+            else:
+                is_sensitive.append(None)
+
+        return is_sensitive
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
