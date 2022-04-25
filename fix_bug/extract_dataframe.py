@@ -92,6 +92,13 @@ class TweetDfExtractor:
 
         return followers_count
 
+    def find_friends_count(self) -> list:
+        friends_count = []
+        for tweet in self.tweets_list:
+            friends_count.append(tweet['user']['friends_count'])
+
+        return friends_count
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
