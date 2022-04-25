@@ -1,6 +1,7 @@
 import json
 import zipfile
 import pandas as pd
+from sympy import source
 from textblob import TextBlob
 
 
@@ -69,6 +70,13 @@ class TweetDfExtractor:
             created_at.append(tweet[created_at])
 
         return created_at
+
+    def find_source(self) -> list:
+        source = []
+        for tweet in self.tweets_list:
+            source.append(tweet[source])
+
+        return source
 
 
 if __name__ == "__main__":
