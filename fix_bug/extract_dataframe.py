@@ -63,6 +63,13 @@ class TweetDfExtractor:
 
         return polarity, subjectivity
 
+    def find_created_time(self) -> list:
+        created_at = []
+        for tweet in self.tweets_list:
+            created_at.append(tweet[created_at])
+
+        return created_at
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
