@@ -5,7 +5,7 @@ import pandas as pd
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join('/fix_bug')))
+sys.path.append(os.path.abspath(os.path.join('./fix_bug')))
 
 
 _, tweet_list = read_json("data\Economic_Twitter_Data.json")
@@ -29,8 +29,7 @@ class TestTweetDfExtractor(unittest.TestCase):
         # tweet_df = self.df.get_tweet_df()
 
     def test_find_statuses_count(self):
-        self.assertEqual(self.df.find_statuses_count(), [
-                         204051, 3462, 6727, 45477, 277957])
+        self.assertEqual(self.df.find_statuses_count(), [40, 40, 40, 40, 40])
 
     def test_find_full_text(self):
         text = ['🚨Africa is "in the midst of a full-blown third wave" of coronavirus, the head of @WHOAFRO has warned\n\nCases have risen across the continent by more than 20% and deaths have also risen by 15% in the last week\n\n@jriggers reports ~ 🧵\nhttps://t.co/CRDhqPHFWM', 'Dr Moeti is head of WHO in Africa, and one of the best public health experts and leaders I know. Hers is a desperate request for vaccines to Africa. We plead with Germany and the UK to lift patent restrictions and urgently transfer technology to enable production in Africa. https://t.co/sOgIroihOc',
