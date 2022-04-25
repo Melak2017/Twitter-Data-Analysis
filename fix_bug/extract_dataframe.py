@@ -123,6 +123,7 @@ class TweetDfExtractor:
 
     def find_hashtags(self) -> list:
         hashtags = []
+<<<<<<< HEAD
         for tw in self.tweets_list:
             hashtags.append(", ".join([hashtag_item['text']
                             for hashtag_item in tw['entities']['hashtags']]))
@@ -131,6 +132,14 @@ class TweetDfExtractor:
         hashtags = [tw.get('entities', {}).get('hashtags', None)
                     for tw in self.tweets_list]
 
+=======
+        for tweet in self.tweets_list:
+            if len(tweet['entities']['hashtags']) > 0:
+                hashtags.append(','.join([x['text']
+                                for x in tweet['entities']['hashtags']]))
+            else:
+                hashtags.append('')
+>>>>>>> e8d6136036132665e2984b3f43d2e895f0be88d2
         return hashtags
 
     def find_mentions(self) -> list:
@@ -142,11 +151,21 @@ class TweetDfExtractor:
         return mentions
 
     def find_lang(self) -> list:
+<<<<<<< HEAD
         lang = [x['lang'] for x in self.tweets_list]
+=======
+        lang = []
+        for tweet in tweet_list:
+            lang.append(tweet['lang'])
+>>>>>>> e8d6136036132665e2984b3f43d2e895f0be88d2
 
         return lang
 
     def find_location(self) -> list:
+<<<<<<< HEAD
+=======
+        #location=[tweet['user']['location'] for tweet in self.tweet_list]
+>>>>>>> e8d6136036132665e2984b3f43d2e895f0be88d2
         location = []
         for tweet in self.tweets_list:
             location.append(tweet['user']['location'])
@@ -183,6 +202,7 @@ class TweetDfExtractor:
 
         return df
 
+<<<<<<< HEAD
 
 def find_full_text(self) -> list:
     try:
@@ -198,6 +218,23 @@ def find_full_text(self) -> list:
     except KeyError:
         text = ''
     return text
+=======
+    def find_full_text(self) -> list:
+        try:
+            retweeted_status = [x.get("retweeted_status", {})
+                                for x in self.tweets_list]
+
+            text = [(x.get("extended_tweet", {})).get("full_text", None)
+                    for x in retweeted_status]
+            filtered = []
+            for x in text:
+                if x != None:
+                    filtered.append(x)
+                    text = ''.join(filtered)
+        except KeyError:
+            text = ''
+        return text
+>>>>>>> e8d6136036132665e2984b3f43d2e895f0be88d2
 
 
 if __name__ == "__main__":
