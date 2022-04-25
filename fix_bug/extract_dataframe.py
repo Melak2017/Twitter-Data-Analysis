@@ -52,6 +52,17 @@ class TweetDfExtractor:
                 text.append(['Empty'])
         return text
 
+    def find_sentiments(self, text: list) -> list:
+        polarity = []
+        subjectivity = []
+        for tweet in text:
+            blob = TextBlob(tweet)
+            sentiment = blob.sentiment
+            polarity.append(sentiment.polarity)
+            subjectivity.append(sentiment.subjectivity)
+
+        return polarity, subjectivity
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
