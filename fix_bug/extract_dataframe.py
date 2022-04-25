@@ -150,6 +150,13 @@ class TweetDfExtractor:
 
         return mentions
 
+    def find_lang(self) -> list:
+        lang = []
+        for tweet in tweet_list:
+            lang.append(tweet['lang'])
+
+        return lang
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
