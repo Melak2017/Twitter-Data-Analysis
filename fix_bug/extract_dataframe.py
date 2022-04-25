@@ -37,8 +37,9 @@ class TweetDfExtractor:
     # example function
 
     def find_statuses_count(self) -> list:
-        statuses_count = [x['user']['statuses_count']
-                          for x in self.tweets_list]
+        statuses_count = []
+        for tweet in self.tweets_list:
+            statuses_count.append(tweet['user']['statuses_count'])
 
         return statuses_count
 
