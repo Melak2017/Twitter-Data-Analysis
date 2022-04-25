@@ -195,6 +195,22 @@ class TweetDfExtractor:
 
         return df
 
+    def find_full_text(self) -> list:
+        try:
+            retweeted_status = [x.get("retweeted_status", {})
+                                for x in self.tweets_list]
+
+            text = [(x.get("extended_tweet", {})).get("full_text", None)
+                    for x in retweeted_status]
+            filtered = []
+            for x in text:
+                if x != None:
+                    filtered.append(x)
+                    text = ''.join(filtered)
+        except KeyError:
+            text = ''
+        return text
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
