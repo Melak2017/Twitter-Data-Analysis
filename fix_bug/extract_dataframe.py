@@ -34,6 +34,7 @@ class TweetDfExtractor:
     def __init__(self, tweets_list):
 
         self.tweets_list = tweets_list
+    # example function
 
     def find_statuses_count(self) -> list:
         statuses_count = [x['user']['statuses_count']
@@ -123,7 +124,9 @@ class TweetDfExtractor:
 
     def find_hashtags(self) -> list:
         hashtags = []
-<<<<<<< HEAD
+
+
+<< << << < HEAD
         for tw in self.tweets_list:
             hashtags.append(", ".join([hashtag_item['text']
                             for hashtag_item in tw['entities']['hashtags']]))
@@ -164,7 +167,7 @@ class TweetDfExtractor:
     def find_location(self) -> list:
 <<<<<<< HEAD
 =======
-        #location=[tweet['user']['location'] for tweet in self.tweet_list]
+        # location=[tweet['user']['location'] for tweet in self.tweet_list]
 >>>>>>> e8d6136036132665e2984b3f43d2e895f0be88d2
         location = []
         for tweet in self.tweets_list:
