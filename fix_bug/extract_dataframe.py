@@ -132,6 +132,16 @@ class TweetDfExtractor:
 
         return retweet_count
 
+    def find_hashtags(self) -> list:
+        hashtags = []
+        for tweet in self.tweets_list:
+            if len(tweet['entities']['hashtags']) > 0:
+                hashtags.append(','.join([x['text']
+                                for x in tweet['entities']['hashtags']]))
+            else:
+                hashtags.append('')
+        return hashtags
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
