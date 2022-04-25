@@ -142,6 +142,14 @@ class TweetDfExtractor:
                 hashtags.append('')
         return hashtags
 
+    def find_mentions(self) -> list:
+        mentions = []
+        for tw in self.tweets_list:
+            mentions.append(", ".join([mention['screen_name']
+                            for mention in tw['entities']['user_mentions']]))
+
+        return mentions
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
