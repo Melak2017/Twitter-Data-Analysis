@@ -30,13 +30,27 @@ class TweetDfExtractor:
 
         self.tweets_list = tweets_list
 
-    # an example function
+    # an example function for
     def find_statuses_count(self) -> list:
         statuses_count = []
         for tweet in self.tweets_list:
             statuses_count.append(tweet['user']['statuses_count'])
 
         return statuses_count
+
+    def find_full_text(self) -> list:
+        """
+        The code checks if retweeted stutus is in tweet list 
+        Extended tweets in retweeted status
+        """
+        text = []
+        for tweet in self.tweets_list:
+            if 'retweeted_status' in self.tweets_list and 'extended_tweet' in tweet['retweeted_status']:
+                text.append(tweet['retweeted_status']
+                            ['extended_tweet']['full_text'])
+            else:
+                text.append(['Empty'])
+        return text
 
 
 if __name__ == "__main__":
