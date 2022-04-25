@@ -78,6 +78,13 @@ class TweetDfExtractor:
 
         return source
 
+    def find_screen_name(self) -> list:
+        screen_name = []
+        for tweet in self.tweets_list:
+            screen_name.append(tweet['user']['screen_name'])
+
+        return screen_name
+
 
 if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
