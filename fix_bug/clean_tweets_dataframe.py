@@ -60,16 +60,19 @@ class CleanTweets:
 
         return self.df
 
-    def remove_non_english_tweets(self) -> pd.DataFrame:
+    def remove_non_english_tweets(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         remove non english tweets from lang
         """
 
-        self.df = self.df.query("lang == 'en' ")
+        index_names = self.df[self.df['lang'] != "en"].index
+
+        self.df.drop(index_names, inplace=True)
+        self.df.reset_index(drop=True, inplace=True)
 
         return self.df
 
 
 if __name__ == "__main__":
-    tweet_df = pd.read_csv("processed_tweet_data.csv")
+    tweet_df = pd.read_csv("data\economic_clean_data.csv")
     cleaner = CleanTweets(tweet_df)
