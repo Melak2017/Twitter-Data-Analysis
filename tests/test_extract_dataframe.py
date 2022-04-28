@@ -5,8 +5,8 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join('fix_bug')))
 
-from extract_dataframe import read_json
 from extract_dataframe import TweetDfExtractor
+from extract_dataframe import read_json
 #
 _, tweet_list = read_json("data/Economic_Twitter_Data.json")
 
